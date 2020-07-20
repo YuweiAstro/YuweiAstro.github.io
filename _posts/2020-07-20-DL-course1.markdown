@@ -12,6 +12,8 @@ tags:
   - note
 ---
 
+
+
 > Hi,
 >
 > Just a quick reminder: this is a quite personalized lecture notes and is not meant for recording every details of the course.
@@ -19,6 +21,8 @@ tags:
 > Still, hope it can be of help.
 >
 > Comments and corrections are welcomed : )
+
+
 
 # Week 2
 
@@ -214,9 +218,13 @@ $\mathrm{d}b^{[1]} = \frac{1}{m}\mathrm{np.sum}(\mathrm{d}Z^{[1]}, \mathrm{axis}
 - Can handle simple to complicated structures
 - A function that can be compute with a "small" L-layre deep NN, may require exponentially more hidden units in a shallow NN
 
----
 
----
+
+____
+
+____
+
+
 
 # Practice
 
