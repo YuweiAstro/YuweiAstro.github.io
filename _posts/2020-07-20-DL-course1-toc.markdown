@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Neural Networks and Deep Learning"
+title:      "toc-Neural Networks and Deep Learning"
 subtitle:   "Notes for Coursera Deep Learning Specialization -- Course 1"
 date:       2020-07-20
 author:     "Yuwei"
