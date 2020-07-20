@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yuwei Blog</title>
+    <description>Yuwei's blog</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 20 Jul 2020 20:46:39 +0800</pubDate>
+    <lastBuildDate>Mon, 20 Jul 2020 20:46:39 +0800</lastBuildDate>
+    <generator>Jekyll v4.1.1</generator>
+    
+      <item>
+        <title>Neural Networks and Deep Learning</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;Hi,&lt;/p&gt;
+
+  &lt;p&gt;Just a quick reminder: this is a quite personalized lecture notes and is not meant for recording every details of the course.&lt;/p&gt;
+
+  &lt;p&gt;Still, hope it can be of help.&lt;/p&gt;
+
+  &lt;p&gt;Comments and corrections are welcomed : )&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;week-2&quot;&gt;Week 2&lt;/h1&gt;
+
+&lt;h3 id=&quot;logistic-regression&quot;&gt;Logistic regression&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A  &lt;strong&gt;binary classification&lt;/strong&gt; method in &lt;strong&gt;supervised learning&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;general-idea&quot;&gt;General idea&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;input: $x \in \mathbb{R}^{n_x \times m}$&lt;/li&gt;
+  &lt;li&gt;hidden layer: logistic regression neurons with parameters $w \in \mathbb{R}^{n_x}$ and $b \in \mathbb{R}$
+    &lt;ul&gt;
+      &lt;li&gt;$z=w^Tx+b$&lt;/li&gt;
+      &lt;li&gt;binary classification: $\hat{y} = a = \sigma(z)$, $\sigma$ is the &lt;strong&gt;sigmoid function&lt;/strong&gt;, $1\over{1+e^{-z}}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;output: prediction $\hat{y}=$ 0 or 1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Now, use gradient descent to train the parameters $w$ and $ b$ :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;define &lt;strong&gt;loss function&lt;/strong&gt;: $L(\hat{y}, y) = -(y\log{\hat{y}}+(1-y)\log{1-\hat{y}})$
+    &lt;ul&gt;
+      &lt;li&gt;applies for &lt;strong&gt;one&lt;/strong&gt; case&lt;/li&gt;
+      &lt;li&gt;$y$ can only be 0 or 1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;define &lt;strong&gt;cost function&lt;/strong&gt;: $J(w, b) = {1\over{m}}\sum\limits_{i=1}^{m}L(a^{(i)}, y^{(i)})$
+    &lt;ul&gt;
+      &lt;li&gt;applies for all ($m$) the cases&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;repeatedly update the parameters with:
+    &lt;ul&gt;
+      &lt;li&gt;$w:= w-\alpha \frac{\mathrm{d}J(w)}{\mathrm{d} w}$&lt;/li&gt;
+      &lt;li&gt;$b:= b-\alpha \frac{\mathrm{d}J(b)}{\mathrm{d} b}$&lt;/li&gt;
+      &lt;li&gt;where $\alpha$ is the &lt;strong&gt;learning rate&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;when coding, a variable’s (e.g. $w$) derivative of the final product (e.g. $J$ in this case), $\frac{\mathrm{d}J(w)}{\mathrm{d} w}$  is written as “$\mathrm{d} w$”&lt;/li&gt;
+      &lt;li&gt;the derivatives are calculated by the &lt;strong&gt;“backpropagation”&lt;/strong&gt; method, basically just get the derivatives start from the output value according to the chain rule&lt;/li&gt;
+      &lt;li&gt;the process of &lt;strong&gt;minimizing&lt;/strong&gt; the cost function $J$ to minimum, is to &lt;strong&gt;maximize&lt;/strong&gt; the likelihood of $\hat{y}$ under the assumption of IID (independent identical distribution)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;More details about  backpropagation:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;basically just get the derivatives start from the output value based on the chain rule&lt;/li&gt;
+  &lt;li&gt;$\mathrm{d} z = \frac{1}{m}(a - y) $&lt;/li&gt;
+  &lt;li&gt;$\mathrm{d}w = \frac{1}{m}x\mathrm{d} z$&lt;/li&gt;
+  &lt;li&gt;$\mathrm{d}b = \frac{1}{m}\mathrm{d} z$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;vectorizing-with-python&quot;&gt;Vectorizing with Python&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Avoid using “for-loop” as much as possible&lt;/li&gt;
+  &lt;li&gt;Make sure that the data are matrix rather than array, or the $\texttt{broadcasting}$ in Python may causes bugs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;week-3&quot;&gt;Week 3&lt;/h1&gt;
+
+&lt;p&gt;An example of a 4-layer NN:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Layer 0: the input layer (not counted), $x$&lt;/li&gt;
+  &lt;li&gt;Layer 1 to 3: the hidden layers&lt;/li&gt;
+  &lt;li&gt;Layer 4: the output layer, $\hat{y}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/007S8ZIlly1ggpg4hpujfj319s0oewts.jpg&quot; alt=&quot;4L&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;two-layer-neural-network&quot;&gt;Two-Layer Neural Network&lt;/h3&gt;
+
+&lt;h4 id=&quot;structure-of-an-l1-layer-nn&quot;&gt;Structure of an $l+1$ layer NN&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Input layer: features $X$, or $a^{[0]}$, &lt;strong&gt;NOT&lt;/strong&gt; counted as a layer
+    &lt;ul&gt;
+      &lt;li&gt;$X \in \mathbb{R}^{n_x \times m}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Hidden layer. A neuron is composed by:
+    &lt;ul&gt;
+      &lt;li&gt;A linear function, $Z$, with parameters $W$ and $b$: $Z^{[l]} = W \times X + b$&lt;/li&gt;
+      &lt;li&gt;A non-linear activation function, $A$, $A^{[l]} = g(Z^{[l]})$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Output layer: $\hat{Y}$, counted as layer $l+1$, or $a^{[l+1]}$&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;notations&quot;&gt;Notations&lt;/h4&gt;
+
+&lt;p&gt;In the case of $m$ training examples, each of which has $n_x$ features, and the 1st layer has $I$ nodes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The $j$-th training example, $x^{(j)}$ is a column vector, and $x^{(j)} \in \mathbb{R}^{n_x \times 1}$&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Stacking the $m$ examples, get $X \in \mathbb{R}^{n_x \times m}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;$a^{&lt;a href=&quot;j&quot;&gt;l&lt;/a&gt;}_i$: the $i$-th node of the $j$-th trainning example in the $l$-th layer&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Taking the $i$-th node in the 1st layer for example:
+        &lt;ul&gt;
+          &lt;li&gt;$a^{[1]}_i=g(z^{[1]}_i)$&lt;/li&gt;
+          &lt;li&gt;$z^{[1]}_i = w^{[1]T}_i X + b^{[1]}_i$,  where  $w^{[1]}_i = w^{&lt;a href=&quot;j&quot;&gt;1&lt;/a&gt;}_i\in\mathbb{R}^{n_x\times1}$, $b^{[1]}_i\in\mathbb{R}$ ($\texttt{braodcasting}$!)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Stacking all the nodes:&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;$W^{[1]}=\begin{bmatrix} \dots &amp;amp; w^{[1]T}&lt;em&gt;1 &amp;amp; \dots \ \ddots &amp;amp; \vdots &amp;amp; \ddots \ \dots &amp;amp; w^{[1]T}_I &amp;amp; \dots  \end{bmatrix}&lt;/em&gt;{I \times n_x}$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$b^{[1]} \in \mathbb{R}^{I \times 1}$
+    &lt;ul&gt;
+      &lt;li&gt;$Z^{[1]} = W^{[1]}X+b^{[1]}$, $Z^{[1]} \in \mathbb{R}^{I \times m}$&lt;/li&gt;
+      &lt;li&gt;$A^{[1]} = g(Z^{[1]})$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Then the 2nd layer:
+    &lt;ul&gt;
+      &lt;li&gt;$Z^{[2]} = W^{[2]}a^{[1]}+b^{[2]}$&lt;/li&gt;
+      &lt;li&gt;$a^{[2]} = g(Z^{[2]})$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;activation-function&quot;&gt;Activation Function&lt;/h3&gt;
+
+&lt;p&gt;####Functions usually used as activation:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Sigmoid function&lt;/th&gt;
+      &lt;th&gt;Hyperbolic tangent (tanh) function&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Expression&lt;/td&gt;
+      &lt;td&gt;$\sigma(z) = \frac{1}{1+e^{-z}}$&lt;/td&gt;
+      &lt;td&gt;$\sigma(z) = \frac{1}{1+e^{-z}}$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Plot&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/007S8ZIlly1ggn35rx5dcj30yw0naq5v.jpg&quot; alt=&quot;Sigmoid&quot; style=&quot;zoom: 30%;&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/007S8ZIlly1ggn35rx5dcj30yw0naq5v.jpg&quot; alt=&quot;Sigmoid&quot; style=&quot;zoom: 30%;&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Rectify linear unit (ReLU) function&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Leaky ReLu function&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Expression&lt;/td&gt;
+      &lt;td&gt;$g(z) = \mathrm{max}{0,z}$&lt;/td&gt;
+      &lt;td&gt;e.g., $g(z) = \mathrm{max}{0.01z,z}$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Plot&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/007S8ZIlly1ggn3jjqblwj30t80gijsp.jpg&quot; alt=&quot;ReLU&quot; style=&quot;zoom:33%;&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/007S8ZIlly1ggn3q1ukgmj31bm0jy0vj.jpg&quot; alt=&quot;LReLU&quot; style=&quot;zoom:33%;&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;suggestions-on-choosing-the-activation-function&quot;&gt;Suggestions on choosing the activation function&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Sigmoid function is &lt;strong&gt;rarely&lt;/strong&gt; used in the hidden layer;&lt;/li&gt;
+  &lt;li&gt;Sigmoid function &lt;strong&gt;may&lt;/strong&gt; be used for the &lt;strong&gt;output&lt;/strong&gt; layer for &lt;strong&gt;binary classification&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Tanh function always performs better and trains faster than sigmoid function in the hidden layers&lt;/li&gt;
+  &lt;li&gt;ReLU function is the &lt;strong&gt;most&lt;/strong&gt; commonly used function, it also trains faster&lt;/li&gt;
+  &lt;li&gt;A leaky ReLU function works better than ReLU function, but it is not commonly used, and ReLU is usually good enough&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Then just use ReLU : )&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;why-there-have-to-be-a-non-linear-activation&quot;&gt;Why there have to be a non-linear activation&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A combination of linear function is still a linear function&lt;/li&gt;
+  &lt;li&gt;Only for &lt;strong&gt;regression problems&lt;/strong&gt;, the &lt;strong&gt;output&lt;/strong&gt; layer might use a linear activation func&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;implement-the-gradient-descent&quot;&gt;Implement the Gradient Descent&lt;/h3&gt;
+
+&lt;h4 id=&quot;forward-propagation&quot;&gt;Forward propagation&lt;/h4&gt;
+
+&lt;p&gt;Just calculate from the input layer through the hidden layer to the output layer &lt;strong&gt;using MATRIX !!!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;backpropagation&quot;&gt;Backpropagation&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A good tutorial &lt;a href=&quot;https://youtu.be/oqd4PXZGnL4&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use the chain rule&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Keep the dimensions matched&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://tva1.sinaimg.cn/large/007S8ZIlly1ggndsojyglj31hc0u07wh.jpg&quot; alt=&quot;BP&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;random-initialization&quot;&gt;Random Initialization&lt;/h4&gt;
+
+&lt;p&gt;To avoid symmetric (doing exactly the same calculation for all neurons)&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Always start small. Most of the activation function has flat slope at large $&lt;/td&gt;
+      &lt;td&gt;x&lt;/td&gt;
+      &lt;td&gt;$, leading to slow learning&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;week-4&quot;&gt;Week 4&lt;/h1&gt;
+
+&lt;h3 id=&quot;forward-propagation-wrap-up&quot;&gt;Forward Propagation wrap-up&lt;/h3&gt;
+
+&lt;h4 id=&quot;forward-propagation-1&quot;&gt;Forward Propagation&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;for one training set:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;$z^{[l]} = w^{[l]}\times a^{[l-1]}+b^{[l]}$&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;$a^{[l]} = g^{[l]}(z^{[l]})$&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;for the whole training set:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;$Z^{[l]} = W^{[l]}\times A^{[l-1]}+b^{[l]}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$A^{[l]} = g^{[l]}(Z^{[l]})$
+    &lt;ul&gt;
+      &lt;li&gt;where $Z^{[l]} = \begin{bmatrix} \vdots &amp;amp; \vdots &amp;amp; \vdots \ z^{&lt;a href=&quot;1&quot;&gt;l&lt;/a&gt;} &amp;amp; \dots &amp;amp; z^{&lt;a href=&quot;m&quot;&gt;l&lt;/a&gt;} \ \vdots &amp;amp; \vdots &amp;amp; \vdots \end{bmatrix}_{n_L \times m}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$A^{[0]} = X$, and $A^{[L]} = \hat{Y}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;backpropagation-1&quot;&gt;Backpropagation&lt;/h4&gt;
+
+&lt;p&gt;$\mathrm{d}Z^{[L]}=A^{[L]}-Y$&lt;/p&gt;
+
+&lt;p&gt;$\mathrm{d}W^{[L]} = \frac{1}{m} \mathrm{d} z^{[L]} A^{[L-1]T}$&lt;/p&gt;
+
+&lt;p&gt;$\mathrm{d}b^{[L]} = \frac{1}{m}\mathrm{np.sum}(\mathrm{d}Z^{[L]}, \mathrm{axis} = 1, \mathrm{keepdims} = True)$&lt;/p&gt;
+
+&lt;p&gt;$\mathrm{d}Z^{[L-1]} = \mathrm{d}W^{[L]T} \mathrm{d}Z^{[L]} *\operatorname{g}’^{[L-1]}(Z^{[L-1]})$&lt;/p&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;p&gt;$\mathrm{d}Z^{[1]} = \mathrm{d}W^{[2]} \mathrm{d}Z^{[2]} \operatorname{g}’^{[1]}(Z^{[1]})$&lt;/p&gt;
+
+&lt;p&gt;$\mathrm{d}W^{[1]} = \frac{1}{m} \mathrm{d} z^{[1]} A^{[0]T}$&lt;/p&gt;
+
+&lt;p&gt;$\mathrm{d}b^{[1]} = \frac{1}{m}\mathrm{np.sum}(\mathrm{d}Z^{[1]}, \mathrm{axis} = 1, \mathrm{keepdims} = True)$&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;”/*” denote &lt;strong&gt;element-wise&lt;/strong&gt; multiplication&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;During the forward &amp;amp; backward computations, many quantities are use repeatedly. Thus it is more efficient to “catch” these quantities for latter uses, such as $w^{[l]}$, $b^{[l]}$, $a^{[l]}$, $\mathrm{d}w^{[l]}$, $\mathrm{d}b^{[l]}$, and $\mathrm{d}a^{[l]}$&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;get-the-matrix-dimension-right&quot;&gt;Get the Matrix Dimension Right&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A great tool for debugging!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$w^{[l]}$, $\mathrm{d}{w}^{[l]}$: $(n^{[l]}, n^{[l-1]})$&lt;/li&gt;
+  &lt;li&gt;$b^{[l]}$, $\mathrm{d}{b}^{[l]}$: $(n^{[l]}, 1)$&lt;/li&gt;
+  &lt;li&gt;$z^{[l]}$, $a^{[l]}$, $dz^{[l]}$, $da^{[l]}$: $(n^{[l]}, 1)$&lt;/li&gt;
+  &lt;li&gt;$Z^{[l]}$, $A^{[l]}$, $dZ^{[l]}$, $dAa^{[l]}$: $(n^{[l]},m)$&lt;/li&gt;
+  &lt;li&gt;because of $\mathtt{braodcasting}$, $B^{[l]}$ is the same as $b^{[l]}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;why-use-a-deep-nn&quot;&gt;Why Use a Deep NN?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Can handle simple to complicated structures&lt;/li&gt;
+  &lt;li&gt;A function that can be compute with a “small” L-layre deep NN, may require exponentially more hidden units in a shallow NN&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;practice&quot;&gt;Practice&lt;/h1&gt;
+
+&lt;h2 id=&quot;week-2-logistic-regression-with-a-neural-network-mindset&quot;&gt;Week 2. Logistic Regression with a Neural Network Mindset&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-prepare-the-data&quot;&gt;1. Prepare the data&lt;/h3&gt;
+
+&lt;p&gt;Flatten, reshape, and standardize the data.&lt;/p&gt;
+
+&lt;p&gt;For RGB image data, just divide 225.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-main-steps-of-building-a-nn&quot;&gt;2. Main steps of building a NN&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Define the model structure (such as number of input features)&lt;/li&gt;
+  &lt;li&gt;Initialize the model’s parameters&lt;/li&gt;
+  &lt;li&gt;Loop:
+    &lt;ol&gt;
+      &lt;li&gt;Calculate current loss (forward propagation)&lt;/li&gt;
+      &lt;li&gt;Calculate current gradient (backward propagation)&lt;/li&gt;
+      &lt;li&gt;Update parameters (gradient descent)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The above steps are often built separately and integrated into &lt;strong&gt;one function&lt;/strong&gt;, the &lt;strong&gt;$\mathtt{model()}$&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The functions for the model may including:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;activation function&lt;/li&gt;
+  &lt;li&gt;initializing function: initialize the weightings and bias with zeros&lt;/li&gt;
+  &lt;li&gt;propagate function: forward and backward propagation, with cost&lt;/li&gt;
+  &lt;li&gt;optimize function&lt;/li&gt;
+  &lt;li&gt;prediction function: use the optimized results to predict&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And put the above functions in the model:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Initialization&lt;/li&gt;
+  &lt;li&gt;Gradient descent&lt;/li&gt;
+  &lt;li&gt;Retrieve parameters w and b&lt;/li&gt;
+  &lt;li&gt;Predict the training and test set&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;further-analysis&quot;&gt;Further analysis&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;choose the learning rate. can plot the learning curve for reference&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Mon, 20 Jul 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/07/20/DL-course1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/07/20/DL-course1/</guid>
+        
+        <category>deep learning</category>
+        
+        <category>Coursera</category>
+        
+        <category>note</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>title</title>
+        <description>
+</description>
+        <pubDate>Sun, 19 Jul 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/07/19/test/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/07/19/test/</guid>
+        
+        <category>test</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
