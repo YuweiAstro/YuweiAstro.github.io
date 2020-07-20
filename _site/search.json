@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Neural Networks and Deep Learning",
+      "subtitle" : "Notes for Coursera Deep Learning Specialization -- Course 1",
+      "tags"     : "deep learning, Coursera, note",
+      "url"      : "/2020/07/20/DL-course1/",
+      "date"     : "2020-07-20 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "title",
       "subtitle" : "subtitle",
       "tags"     : "test",
