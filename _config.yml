@@ -1,9 +1,9 @@
 # Site settings
-title: Yuwei's Notebook
-SEOTitle: Yuwei Notebook | Yuwei的笔记本
+title: Yuwei Notebook
+SEOTitle: Yuwei
 header-img: img/home-bg.jpg
 email: yuwei0717@gmail.com
-description: "Yuwei's "
+description: "Yuwei's blog"
 keyword: "tech, astronomy, astrophysics, CV, ML, DL"
 url: "https://yuweiastro.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
@@ -12,7 +12,7 @@ baseurl: ""                             # for example, '/blog' if your blog host
 future: true
 
 # SNS settings
-RSS: true
+RSS: false
 #weibo_username:     
 #zhihu_username:     
 github_username:    yuweiastro
@@ -62,7 +62,7 @@ kramdown:
  disqus_username: YuweiAstro
 
 # Netease settings
-# netease_comment: false
+ netease_comment: false
 
 
 
