@@ -5,8 +5,8 @@
     <description>Yuwei's blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 20 Jul 2020 20:51:15 +0800</pubDate>
-    <lastBuildDate>Mon, 20 Jul 2020 20:51:15 +0800</lastBuildDate>
+    <pubDate>Mon, 20 Jul 2020 21:27:49 +0800</pubDate>
+    <lastBuildDate>Mon, 20 Jul 2020 21:27:49 +0800</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -128,13 +128,13 @@
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;$a^{&lt;a href=&quot;j&quot;&gt;l&lt;/a&gt;}_i$: the $i$-th node of the $j$-th trainning example in the $l$-th layer&lt;/p&gt;
+    &lt;p&gt;$a^{[l](j)}_i$: the i-th node of the j-th trainning example in the l-th layer&lt;/p&gt;
 
     &lt;ul&gt;
       &lt;li&gt;Taking the $i$-th node in the 1st layer for example:
         &lt;ul&gt;
           &lt;li&gt;$a^{[1]}_i=g(z^{[1]}_i)$&lt;/li&gt;
-          &lt;li&gt;$z^{[1]}_i = w^{[1]T}_i X + b^{[1]}_i$,  where  $w^{[1]}_i = w^{&lt;a href=&quot;j&quot;&gt;1&lt;/a&gt;}_i\in\mathbb{R}^{n_x\times1}$, $b^{[1]}_i\in\mathbb{R}$ ($\texttt{braodcasting}$!)&lt;/li&gt;
+          &lt;li&gt;$z^{[1]}_i = w^{[1]T}_i X + b^{[1]}_i$,  where  $w^{[1]}_i = w^{[1](j)}_i \in \mathbb{R}^{n_x \times 1}$, $b^{[1]}_i \in \mathbb{R}$ ($\texttt{braodcasting}$!)&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;
@@ -162,7 +162,7 @@
 
 &lt;h3 id=&quot;activation-function&quot;&gt;Activation Function&lt;/h3&gt;
 
-&lt;p&gt;####Functions usually used as activation:&lt;/p&gt;
+&lt;h4 id=&quot;functions-usually-used-as-activation&quot;&gt;Functions usually used as activation:&lt;/h4&gt;
 
 &lt;table&gt;
   &lt;thead&gt;

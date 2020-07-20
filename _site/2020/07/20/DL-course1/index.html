@@ -396,13 +396,13 @@
     </ul>
   </li>
   <li>
-    <p>$a^{<a href="j">l</a>}_i$: the $i$-th node of the $j$-th trainning example in the $l$-th layer</p>
+    <p>$a^{[l](j)}_i$: the i-th node of the j-th trainning example in the l-th layer</p>
 
     <ul>
       <li>Taking the $i$-th node in the 1st layer for example:
         <ul>
           <li>$a^{[1]}_i=g(z^{[1]}_i)$</li>
-          <li>$z^{[1]}_i = w^{[1]T}_i X + b^{[1]}_i$,  where  $w^{[1]}_i = w^{<a href="j">1</a>}_i\in\mathbb{R}^{n_x\times1}$, $b^{[1]}_i\in\mathbb{R}$ ($\texttt{braodcasting}$!)</li>
+          <li>$z^{[1]}_i = w^{[1]T}_i X + b^{[1]}_i$,  where  $w^{[1]}_i = w^{[1](j)}_i \in \mathbb{R}^{n_x \times 1}$, $b^{[1]}_i \in \mathbb{R}$ ($\texttt{braodcasting}$!)</li>
         </ul>
       </li>
       <li>
@@ -430,7 +430,7 @@
 
 <h3 id="activation-function">Activation Function</h3>
 
-<p>####Functions usually used as activation:</p>
+<h4 id="functions-usually-used-as-activation">Functions usually used as activation:</h4>
 
 <table>
   <thead>
@@ -761,7 +761,7 @@
   });
 </script>
 <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.5/MathJax.js?config=TeX-AMS-MML_SVG">
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG">
 </script>
 
 

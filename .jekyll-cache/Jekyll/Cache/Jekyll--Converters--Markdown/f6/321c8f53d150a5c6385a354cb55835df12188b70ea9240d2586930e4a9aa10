@@ -1,0 +1,379 @@
+I"�2<blockquote>
+  <p>Hi,</p>
+
+  <p>Just a quick reminder: this is a quite personalized lecture notes and is not meant for recording every details of the course.</p>
+
+  <p>Still, hope it can be of help.</p>
+
+  <p>Comments and corrections are welcomed : )</p>
+</blockquote>
+
+<h1 id="week-2">Week 2</h1>
+
+<h3 id="logistic-regression">Logistic regression</h3>
+
+<blockquote>
+  <p>A  <strong>binary classification</strong> method in <strong>supervised learning</strong></p>
+</blockquote>
+
+<h4 id="general-idea">General idea</h4>
+
+<ul>
+  <li>input: $x \in \mathbb{R}^{n_x \times m}$</li>
+  <li>hidden layer: logistic regression neurons with parameters $w \in \mathbb{R}^{n_x}$ and $b \in \mathbb{R}$
+    <ul>
+      <li>$z=w^Tx+b$</li>
+      <li>binary classification: $\hat{y} = a = \sigma(z)$, $\sigma$ is the <strong>sigmoid function</strong>, $1\over{1+e^{-z}}$</li>
+    </ul>
+  </li>
+  <li>output: prediction $\hat{y}=$ 0 or 1</li>
+</ul>
+
+<p><strong>Now, use gradient descent to train the parameters $w$ and $ b$ :</strong></p>
+
+<ul>
+  <li>define <strong>loss function</strong>: $L(\hat{y}, y) = -(y\log{\hat{y}}+(1-y)\log{1-\hat{y}})$
+    <ul>
+      <li>applies for <strong>one</strong> case</li>
+      <li>$y$ can only be 0 or 1</li>
+    </ul>
+  </li>
+  <li>define <strong>cost function</strong>: $J(w, b) = {1\over{m}}\sum\limits_{i=1}^{m}L(a^{(i)}, y^{(i)})$
+    <ul>
+      <li>applies for all ($m$) the cases</li>
+    </ul>
+  </li>
+  <li>repeatedly update the parameters with:
+    <ul>
+      <li>$w:= w-\alpha \frac{\mathrm{d}J(w)}{\mathrm{d} w}$</li>
+      <li>$b:= b-\alpha \frac{\mathrm{d}J(b)}{\mathrm{d} b}$</li>
+      <li>where $\alpha$ is the <strong>learning rate</strong></li>
+      <li>when coding, a variable’s (e.g. $w$) derivative of the final product (e.g. $J$ in this case), $\frac{\mathrm{d}J(w)}{\mathrm{d} w}$  is written as “$\mathrm{d} w$”</li>
+      <li>the derivatives are calculated by the <strong>“backpropagation”</strong> method, basically just get the derivatives start from the output value according to the chain rule</li>
+      <li>the process of <strong>minimizing</strong> the cost function $J$ to minimum, is to <strong>maximize</strong> the likelihood of $\hat{y}$ under the assumption of IID (independent identical distribution)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>More details about  backpropagation:</strong></p>
+
+<ul>
+  <li>basically just get the derivatives start from the output value based on the chain rule</li>
+  <li>$\mathrm{d} z = \frac{1}{m}(a - y) $</li>
+  <li>$\mathrm{d}w = \frac{1}{m}x\mathrm{d} z$</li>
+  <li>$\mathrm{d}b = \frac{1}{m}\mathrm{d} z$</li>
+</ul>
+
+<h3 id="vectorizing-with-python">Vectorizing with Python</h3>
+
+<ul>
+  <li>Avoid using “for-loop” as much as possible</li>
+  <li>Make sure that the data are matrix rather than array, or the $\texttt{broadcasting}$ in Python may causes bugs</li>
+</ul>
+
+<h1 id="week-3">Week 3</h1>
+
+<p>An example of a 4-layer NN:</p>
+
+<ul>
+  <li>Layer 0: the input layer (not counted), $x$</li>
+  <li>Layer 1 to 3: the hidden layers</li>
+  <li>Layer 4: the output layer, $\hat{y}$</li>
+</ul>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggpg4hpujfj319s0oewts.jpg" alt="4L" /></p>
+
+<h3 id="two-layer-neural-network">Two-Layer Neural Network</h3>
+
+<h4 id="structure-of-an-l1-layer-nn">Structure of an $l+1$ layer NN</h4>
+
+<ol>
+  <li>Input layer: features $X$, or $a^{[0]}$, <strong>NOT</strong> counted as a layer
+    <ul>
+      <li>$X \in \mathbb{R}^{n_x \times m}$</li>
+    </ul>
+  </li>
+  <li>Hidden layer. A neuron is composed by:
+    <ul>
+      <li>A linear function, $Z$, with parameters $W$ and $b$: $Z^{[l]} = W \times X + b$</li>
+      <li>A non-linear activation function, $A$, $A^{[l]} = g(Z^{[l]})$</li>
+    </ul>
+  </li>
+  <li>Output layer: $\hat{Y}$, counted as layer $l+1$, or $a^{[l+1]}$</li>
+</ol>
+
+<h4 id="notations">Notations</h4>
+
+<p>In the case of $m$ training examples, each of which has $n_x$ features, and the 1st layer has $I$ nodes:</p>
+
+<ul>
+  <li>
+    <p>The $j$-th training example, $x^{(j)}$ is a column vector, and $x^{(j)} \in \mathbb{R}^{n_x \times 1}$</p>
+
+    <ul>
+      <li>Stacking the $m$ examples, get $X \in \mathbb{R}^{n_x \times m}$</li>
+    </ul>
+  </li>
+  <li>
+    <p>$a^{[l](j)}_i$: the i-th node of the j-th trainning example in the l-th layer</p>
+
+    <ul>
+      <li>Taking the $i$-th node in the 1st layer for example:
+        <ul>
+          <li>$a^{[1]}_i=g(z^{[1]}_i)$</li>
+          <li>$z^{[1]}_i = w^{[1]T}_i X + b^{[1]}_i$,  where  $w^{[1]}_i = w^{[1](j)}_i \in \mathbb{R}^{n_x \times 1}$, $b^{[1]}_i \in \mathbb{R}$ ($\texttt{braodcasting}$!)</li>
+        </ul>
+      </li>
+      <li>
+        <p>Stacking all the nodes:</p>
+
+        <ul>
+          <li>$$W^{[1]}=\begin{bmatrix} \dots &amp; w^{[1]T}<em>1 &amp; \dots \ \ddots &amp; \vdots &amp; \ddots \ \dots &amp; w^{[1]T}_I &amp; \dots  \end{bmatrix}</em>{I \times n_x}$</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>$b^{[1]} \in \mathbb{R}^{I \times 1}$
+    <ul>
+      <li>$Z^{[1]} = W^{[1]}X+b^{[1]}$, $Z^{[1]} \in \mathbb{R}^{I \times m}$</li>
+      <li>$A^{[1]} = g(Z^{[1]})$</li>
+    </ul>
+  </li>
+  <li>Then the 2nd layer:
+    <ul>
+      <li>$Z^{[2]} = W^{[2]}a^{[1]}+b^{[2]}$</li>
+      <li>$a^{[2]} = g(Z^{[2]})$</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="activation-function">Activation Function</h3>
+
+<p>####Functions usually used as activation:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sigmoid function</th>
+      <th>Hyperbolic tangent (tanh) function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Expression</td>
+      <td>$\sigma(z) = \frac{1}{1+e^{-z}}$</td>
+      <td>$\sigma(z) = \frac{1}{1+e^{-z}}$</td>
+    </tr>
+    <tr>
+      <td>Plot</td>
+      <td><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggn35rx5dcj30yw0naq5v.jpg" alt="Sigmoid" style="zoom: 30%;" /></td>
+      <td><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggn35rx5dcj30yw0naq5v.jpg" alt="Sigmoid" style="zoom: 30%;" /></td>
+    </tr>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><strong>Rectify linear unit (ReLU) function</strong></td>
+      <td><strong>Leaky ReLu function</strong></td>
+    </tr>
+    <tr>
+      <td>Expression</td>
+      <td>$g(z) = \mathrm{max}{0,z}$</td>
+      <td>e.g., $g(z) = \mathrm{max}{0.01z,z}$</td>
+    </tr>
+    <tr>
+      <td>Plot</td>
+      <td><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggn3jjqblwj30t80gijsp.jpg" alt="ReLU" style="zoom:33%;" /></td>
+      <td><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggn3q1ukgmj31bm0jy0vj.jpg" alt="LReLU" style="zoom:33%;" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="suggestions-on-choosing-the-activation-function">Suggestions on choosing the activation function</h4>
+
+<ol>
+  <li>Sigmoid function is <strong>rarely</strong> used in the hidden layer;</li>
+  <li>Sigmoid function <strong>may</strong> be used for the <strong>output</strong> layer for <strong>binary classification</strong></li>
+  <li>Tanh function always performs better and trains faster than sigmoid function in the hidden layers</li>
+  <li>ReLU function is the <strong>most</strong> commonly used function, it also trains faster</li>
+  <li>A leaky ReLU function works better than ReLU function, but it is not commonly used, and ReLU is usually good enough</li>
+  <li><strong>Then just use ReLU : )</strong></li>
+</ol>
+
+<h4 id="why-there-have-to-be-a-non-linear-activation">Why there have to be a non-linear activation</h4>
+
+<ul>
+  <li>A combination of linear function is still a linear function</li>
+  <li>Only for <strong>regression problems</strong>, the <strong>output</strong> layer might use a linear activation func</li>
+</ul>
+
+<h3 id="implement-the-gradient-descent">Implement the Gradient Descent</h3>
+
+<h4 id="forward-propagation">Forward propagation</h4>
+
+<p>Just calculate from the input layer through the hidden layer to the output layer <strong>using MATRIX !!!</strong></p>
+
+<h4 id="backpropagation">Backpropagation</h4>
+
+<blockquote>
+  <p>A good tutorial <a href="https://youtu.be/oqd4PXZGnL4">here</a></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Use the chain rule</p>
+  </li>
+  <li>
+    <p>Keep the dimensions matched</p>
+
+    <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggndsojyglj31hc0u07wh.jpg" alt="BP" /></p>
+  </li>
+</ul>
+
+<h4 id="random-initialization">Random Initialization</h4>
+
+<p>To avoid symmetric (doing exactly the same calculation for all neurons)</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Always start small. Most of the activation function has flat slope at large $</td>
+      <td>x</td>
+      <td>$, leading to slow learning</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="week-4">Week 4</h1>
+
+<h3 id="forward-propagation-wrap-up">Forward Propagation wrap-up</h3>
+
+<h4 id="forward-propagation-1">Forward Propagation</h4>
+
+<ul>
+  <li>
+    <p><strong>for one training set:</strong></p>
+
+    <ul>
+      <li>
+        <p>$z^{[l]} = w^{[l]}\times a^{[l-1]}+b^{[l]}$</p>
+      </li>
+      <li>
+        <p>$a^{[l]} = g^{[l]}(z^{[l]})$</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>for the whole training set:</strong></p>
+
+    <ul>
+      <li>$Z^{[l]} = W^{[l]}\times A^{[l-1]}+b^{[l]}$</li>
+    </ul>
+  </li>
+  <li>$A^{[l]} = g^{[l]}(Z^{[l]})$
+    <ul>
+      <li>where $Z^{[l]} = \begin{bmatrix} \vdots &amp; \vdots &amp; \vdots \ z^{<a href="1">l</a>} &amp; \dots &amp; z^{<a href="m">l</a>} \ \vdots &amp; \vdots &amp; \vdots \end{bmatrix}_{n_L \times m}$</li>
+    </ul>
+  </li>
+  <li>$A^{[0]} = X$, and $A^{[L]} = \hat{Y}$</li>
+</ul>
+
+<h4 id="backpropagation-1">Backpropagation</h4>
+
+<p>$\mathrm{d}Z^{[L]}=A^{[L]}-Y$</p>
+
+<p>$\mathrm{d}W^{[L]} = \frac{1}{m} \mathrm{d} z^{[L]} A^{[L-1]T}$</p>
+
+<p>$\mathrm{d}b^{[L]} = \frac{1}{m}\mathrm{np.sum}(\mathrm{d}Z^{[L]}, \mathrm{axis} = 1, \mathrm{keepdims} = True)$</p>
+
+<p>$\mathrm{d}Z^{[L-1]} = \mathrm{d}W^{[L]T} \mathrm{d}Z^{[L]} *\operatorname{g}’^{[L-1]}(Z^{[L-1]})$</p>
+
+<p>…</p>
+
+<p>$\mathrm{d}Z^{[1]} = \mathrm{d}W^{[2]} \mathrm{d}Z^{[2]} \operatorname{g}’^{[1]}(Z^{[1]})$</p>
+
+<p>$\mathrm{d}W^{[1]} = \frac{1}{m} \mathrm{d} z^{[1]} A^{[0]T}$</p>
+
+<p>$\mathrm{d}b^{[1]} = \frac{1}{m}\mathrm{np.sum}(\mathrm{d}Z^{[1]}, \mathrm{axis} = 1, \mathrm{keepdims} = True)$</p>
+
+<blockquote>
+  <p>”/*” denote <strong>element-wise</strong> multiplication</p>
+</blockquote>
+
+<blockquote>
+  <p>During the forward &amp; backward computations, many quantities are use repeatedly. Thus it is more efficient to “catch” these quantities for latter uses, such as $w^{[l]}$, $b^{[l]}$, $a^{[l]}$, $\mathrm{d}w^{[l]}$, $\mathrm{d}b^{[l]}$, and $\mathrm{d}a^{[l]}$</p>
+</blockquote>
+
+<h3 id="get-the-matrix-dimension-right">Get the Matrix Dimension Right</h3>
+
+<blockquote>
+  <p>A great tool for debugging!</p>
+</blockquote>
+
+<ul>
+  <li>$w^{[l]}$, $\mathrm{d}{w}^{[l]}$: $(n^{[l]}, n^{[l-1]})$</li>
+  <li>$b^{[l]}$, $\mathrm{d}{b}^{[l]}$: $(n^{[l]}, 1)$</li>
+  <li>$z^{[l]}$, $a^{[l]}$, $dz^{[l]}$, $da^{[l]}$: $(n^{[l]}, 1)$</li>
+  <li>$Z^{[l]}$, $A^{[l]}$, $dZ^{[l]}$, $dAa^{[l]}$: $(n^{[l]},m)$</li>
+  <li>because of $\mathtt{braodcasting}$, $B^{[l]}$ is the same as $b^{[l]}$</li>
+</ul>
+
+<h3 id="why-use-a-deep-nn">Why Use a Deep NN?</h3>
+
+<ul>
+  <li>Can handle simple to complicated structures</li>
+  <li>A function that can be compute with a “small” L-layre deep NN, may require exponentially more hidden units in a shallow NN</li>
+</ul>
+
+<hr />
+
+<h1 id="practice">Practice</h1>
+
+<h2 id="week-2-logistic-regression-with-a-neural-network-mindset">Week 2. Logistic Regression with a Neural Network Mindset</h2>
+
+<h3 id="1-prepare-the-data">1. Prepare the data</h3>
+
+<p>Flatten, reshape, and standardize the data.</p>
+
+<p>For RGB image data, just divide 225.</p>
+
+<h3 id="2-main-steps-of-building-a-nn">2. Main steps of building a NN</h3>
+
+<ol>
+  <li>Define the model structure (such as number of input features)</li>
+  <li>Initialize the model’s parameters</li>
+  <li>Loop:
+    <ol>
+      <li>Calculate current loss (forward propagation)</li>
+      <li>Calculate current gradient (backward propagation)</li>
+      <li>Update parameters (gradient descent)</li>
+    </ol>
+  </li>
+</ol>
+
+<p>The above steps are often built separately and integrated into <strong>one function</strong>, the <strong>$\mathtt{model()}$</strong></p>
+
+<p>The functions for the model may including:</p>
+
+<ul>
+  <li>activation function</li>
+  <li>initializing function: initialize the weightings and bias with zeros</li>
+  <li>propagate function: forward and backward propagation, with cost</li>
+  <li>optimize function</li>
+  <li>prediction function: use the optimized results to predict</li>
+</ul>
+
+<p>And put the above functions in the model:</p>
+
+<ol>
+  <li>Initialization</li>
+  <li>Gradient descent</li>
+  <li>Retrieve parameters w and b</li>
+  <li>Predict the training and test set</li>
+</ol>
+
+<h3 id="further-analysis">Further analysis</h3>
+
+<ol>
+  <li>choose the learning rate. can plot the learning curve for reference</li>
+</ol>
+:ET
