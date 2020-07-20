@@ -1,6 +1,6 @@
 # Site settings
 title: Yuwei's Notebook
-SEOTitle: YW
+SEOTitle: Yuwei's Notebook | Yuwei的笔记本
 header-img: img/home-bg.jpg
 email: yuwei0717@gmail.com
 description: "Yuwei's "
@@ -59,7 +59,7 @@ kramdown:
 
 
 # Disqus settings
-# disqus_username: hux
+ disqus_username: YuweiAstro
 
 # Netease settings
 # netease_comment: false
@@ -68,7 +68,7 @@ kramdown:
 
 # Analytics settings
 # Baidu Analytics 
-# ba_track_id: [your track id]
+ ba_track_id: e0d2400646dc6f0dfb5b1300b4163306
 
 # Google Analytics
 # ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
@@ -78,7 +78,7 @@ kramdown:
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Hi, this is Yuwei's notebook, for what she saw, what she thought, and what she learnt."
+sidebar-about-description: "For what I'm thinking and what I've learnt"
 sidebar-avatar: /img/avatar-yw.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
