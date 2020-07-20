@@ -1,4 +1,4 @@
-I"š2<blockquote>
+I"®3<blockquote>
   <p>Hi,</p>
 
   <p>Just a quick reminder: this is a quite personalized lecture notes and is not meant for recording every details of the course.</p>
@@ -115,20 +115,20 @@
     </ul>
   </li>
   <li>
-    <p>$a^{<a href="j">l</a>}_i$: the $i$-th node of the $j$-th trainning example in the $l$-th layer</p>
+    <p>$a^{[l](j)}_i$: the i-th node of the j-th trainning example in the l-th layer</p>
 
     <ul>
       <li>Taking the $i$-th node in the 1st layer for example:
         <ul>
           <li>$a^{[1]}_i=g(z^{[1]}_i)$</li>
-          <li>$z^{[1]}_i = w^{[1]T}_i X + b^{[1]}_i$,  where  $w^{[1]}_i = w^{<a href="j">1</a>}_i\in\mathbb{R}^{n_x\times1}$, $b^{[1]}_i\in\mathbb{R}$ ($\texttt{braodcasting}$!)</li>
+          <li>$z^{[1]}_i = w^{[1]T}_i X + b^{[1]}_i$,  where  $w^{[1]}_i = w^{[1](j)}_i \in \mathbb{R}^{n_x \times 1}$, $b^{[1]}_i \in \mathbb{R}$ ($\texttt{braodcasting}$!)</li>
         </ul>
       </li>
       <li>
         <p>Stacking all the nodes:</p>
 
         <ul>
-          <li>$W^{[1]}=\begin{bmatrix} \dots &amp; w^{[1]T}<em>1 &amp; \dots \ \ddots &amp; \vdots &amp; \ddots \ \dots &amp; w^{[1]T}_I &amp; \dots  \end{bmatrix}</em>{I \times n_x}$</li>
+          <li>$W^{[1]}=\begin{bmatrix} \dots &amp; w^{[1]T}_1 &amp; \dots \\ \ddots &amp; \vdots &amp; \ddots \\ \dots &amp; w^{[1]T}_I &amp; \dots  \end{bmatrix}_{I \times n_x}$</li>
         </ul>
       </li>
     </ul>
@@ -149,7 +149,7 @@
 
 <h3 id="activation-function">Activation Function</h3>
 
-<p>####Functions usually used as activation:</p>
+<h4 id="functions-usually-used-as-activation">Functions usually used as activation:</h4>
 
 <table>
   <thead>
@@ -177,8 +177,8 @@
     </tr>
     <tr>
       <td>Expression</td>
-      <td>$g(z) = \mathrm{max}{0,z}$</td>
-      <td>e.g., $g(z) = \mathrm{max}{0.01z,z}$</td>
+      <td>$g(z) = \mathrm{max}\{0,z\}$</td>
+      <td>e.g., $g(z) = \mathrm{max}\{0.01z,z\}$</td>
     </tr>
     <tr>
       <td>Plot</td>
@@ -269,11 +269,19 @@
       <li>$Z^{[l]} = W^{[l]}\times A^{[l-1]}+b^{[l]}$</li>
     </ul>
   </li>
-  <li>$A^{[l]} = g^{[l]}(Z^{[l]})$
+  <li>
+    <p>$A^{[l]} = g^{[l]}(Z^{[l]})$</p>
     <ul>
-      <li>where $Z^{[l]} = \begin{bmatrix} \vdots &amp; \vdots &amp; \vdots \ z^{<a href="1">l</a>} &amp; \dots &amp; z^{<a href="m">l</a>} \ \vdots &amp; \vdots &amp; \vdots \end{bmatrix}_{n_L \times m}$</li>
+      <li>where $Z^{[l]} = \begin{bmatrix} \vdots &amp; \vdots &amp; \vdots \\ z^{<a href="1">l</a>} &amp; \dots &amp; z^{[l](m)} \\ \vdots &amp; \vdots &amp; \vdots \end{bmatrix}_{n_L \times m}$</li>
     </ul>
   </li>
+</ul>
+
+<p>$Z^{[1]}=\begin{bmatrix} \vdots &amp; \vdots &amp; \vdots \\ 
+                    z^{<a href="1">l</a>} &amp; \vdots &amp; z^{<a href="m">l</a>} \<br />
+                    \vdots &amp; \vdots &amp; \vdots \end{bmatrix}_{I \times n_x}$</p>
+
+<ul>
   <li>$A^{[0]} = X$, and $A^{[L]} = \hat{Y}$</li>
 </ul>
 

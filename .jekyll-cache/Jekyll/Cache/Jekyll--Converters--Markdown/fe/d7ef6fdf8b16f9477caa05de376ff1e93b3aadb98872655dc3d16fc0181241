@@ -1,4 +1,4 @@
-I"§2<blockquote>
+I"«2<blockquote>
   <p>Hi,</p>
 
   <p>Just a quick reminder: this is a quite personalized lecture notes and is not meant for recording every details of the course.</p>
@@ -128,11 +128,7 @@
         <p>Stacking all the nodes:</p>
 
         <ul>
-          <li>$W^{[1]}=\left[\begin{array}{ccc}
-\ldots &amp; w_{1}^{[1] T} &amp; \ldots <br />
-\ddots &amp; \vdots &amp; \ddots <br />
-\cdots &amp; w_{I}^{[1] T} &amp; \ldots
-\end{array}\right]<em>{I \times n</em>{x}}$</li>
+          <li>$W^{[1]}=\begin{bmatrix} \dots &amp; w^{[1]T}_1 &amp; \dots \\ \ddots &amp; \vdots &amp; \ddots \\ \dots &amp; w^{[1]T}_I &amp; \dots  \end{bmatrix}_{I \times n_x}$</li>
         </ul>
       </li>
     </ul>
@@ -153,7 +149,7 @@
 
 <h3 id="activation-function">Activation Function</h3>
 
-<p>####Functions usually used as activation:</p>
+<h4 id="functions-usually-used-as-activation">Functions usually used as activation:</h4>
 
 <table>
   <thead>
@@ -181,8 +177,8 @@
     </tr>
     <tr>
       <td>Expression</td>
-      <td>$g(z) = \mathrm{max}{0,z}$</td>
-      <td>e.g., $g(z) = \mathrm{max}{0.01z,z}$</td>
+      <td>$g(z) = \mathrm{max}\{0,z\}$</td>
+      <td>e.g., $g(z) = \mathrm{max}\{0.01z,z\}$</td>
     </tr>
     <tr>
       <td>Plot</td>

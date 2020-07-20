@@ -5,8 +5,8 @@
     <description>Yuwei's blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 20 Jul 2020 21:27:49 +0800</pubDate>
-    <lastBuildDate>Mon, 20 Jul 2020 21:27:49 +0800</lastBuildDate>
+    <pubDate>Mon, 20 Jul 2020 23:21:55 +0800</pubDate>
+    <lastBuildDate>Mon, 20 Jul 2020 23:21:55 +0800</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -141,7 +141,7 @@
         &lt;p&gt;Stacking all the nodes:&lt;/p&gt;
 
         &lt;ul&gt;
-          &lt;li&gt;$W^{[1]}=\begin{bmatrix} \dots &amp;amp; w^{[1]T}&lt;em&gt;1 &amp;amp; \dots \ \ddots &amp;amp; \vdots &amp;amp; \ddots \ \dots &amp;amp; w^{[1]T}_I &amp;amp; \dots  \end{bmatrix}&lt;/em&gt;{I \times n_x}$&lt;/li&gt;
+          &lt;li&gt;$W^{[1]}=\begin{bmatrix} \dots &amp;amp; w^{[1]T}_1 &amp;amp; \dots \\ \ddots &amp;amp; \vdots &amp;amp; \ddots \\ \dots &amp;amp; w^{[1]T}_I &amp;amp; \dots  \end{bmatrix}_{I \times n_x}$&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -190,8 +190,8 @@
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Expression&lt;/td&gt;
-      &lt;td&gt;$g(z) = \mathrm{max}{0,z}$&lt;/td&gt;
-      &lt;td&gt;e.g., $g(z) = \mathrm{max}{0.01z,z}$&lt;/td&gt;
+      &lt;td&gt;$g(z) = \mathrm{max}\{0,z\}$&lt;/td&gt;
+      &lt;td&gt;e.g., $g(z) = \mathrm{max}\{0.01z,z\}$&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Plot&lt;/td&gt;
@@ -284,7 +284,7 @@
   &lt;/li&gt;
   &lt;li&gt;$A^{[l]} = g^{[l]}(Z^{[l]})$
     &lt;ul&gt;
-      &lt;li&gt;where $Z^{[l]} = \begin{bmatrix} \vdots &amp;amp; \vdots &amp;amp; \vdots \ z^{&lt;a href=&quot;1&quot;&gt;l&lt;/a&gt;} &amp;amp; \dots &amp;amp; z^{&lt;a href=&quot;m&quot;&gt;l&lt;/a&gt;} \ \vdots &amp;amp; \vdots &amp;amp; \vdots \end{bmatrix}_{n_L \times m}$&lt;/li&gt;
+      &lt;li&gt;where $Z^{[1]}=\begin{bmatrix} \vdots &amp;amp; \vdots &amp;amp; \vdots \\  z^{[l](1)} &amp;amp; \vdots &amp;amp; z^{[l](m)} \\ \vdots &amp;amp; \vdots &amp;amp; \vdots \end{bmatrix}_{I \times n_x}$&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;$A^{[0]} = X$, and $A^{[L]} = \hat{Y}$&lt;/li&gt;

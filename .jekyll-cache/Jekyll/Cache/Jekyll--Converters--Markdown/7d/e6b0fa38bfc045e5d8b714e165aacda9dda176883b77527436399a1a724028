@@ -1,4 +1,4 @@
-I"è2<blockquote>
+I"¨2<blockquote>
   <p>Hi,</p>
 
   <p>Just a quick reminder: this is a quite personalized lecture notes and is not meant for recording every details of the course.</p>
@@ -121,7 +121,7 @@
       <li>Taking the $i$-th node in the 1st layer for example:
         <ul>
           <li>$a^{[1]}_i=g(z^{[1]}_i)$</li>
-          <li>$z^{[1]}_i = w^{[1]T}_i X + b^{[1]}_i$,  where  $w^{[1]}_i = w^{<a href="j">1</a>}_i \in \mathbb{R}^{n_x \times 1}$, $b^{[1]}_i \in \mathbb{R}$ ($\texttt{braodcasting}$!)</li>
+          <li>$z^{[1]}_i = w^{[1]T}_i X + b^{[1]}_i$,  where  $w^{[1]}_i = w^{[1](j)}_i \in \mathbb{R}^{n_x \times 1}$, $b^{[1]}_i \in \mathbb{R}$ ($\texttt{braodcasting}$!)</li>
         </ul>
       </li>
       <li>
@@ -149,7 +149,7 @@
 
 <h3 id="activation-function">Activation Function</h3>
 
-<p>####Functions usually used as activation:</p>
+<h4 id="functions-usually-used-as-activation">Functions usually used as activation:</h4>
 
 <table>
   <thead>
