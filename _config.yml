@@ -72,8 +72,8 @@ netease_comment: false
 ba_track_id: e0d2400646dc6f0dfb5b1300b4163306
 
 # Google Analytics
-#ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-#ga_domain: huangxuan.me
+ga_track_id: UA-173126044-1            # Format: UA-xxxxxx-xx
+ga_domain: yuweiastro.github.io
 
 
 
