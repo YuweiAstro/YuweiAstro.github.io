@@ -37,6 +37,21 @@ tags:
 
 
 
+### 问：康奈尔鸟类实验室对”抓捕-绝育-放归（TNR）“持什么立场？
+
+**答**：TNR指抓捕流浪猫、对它们接种疫苗/绝育后、再放归自然的行为。尽管在理想情况下，这个方法可能在一段时间后减少流浪猫的数量，但研究表明，实际的复杂情况会导致其无效。根据科学研究结果，我们不支持将TNR作为降低流浪猫对野生动物危害的处理方式。
+
+以下是TNR存在的一些问题：
+
+- 建立或维护流浪猫群落会导致人们更可能放弃所养的猫（Castillo and Clarke 2003）。在一些情况下，与不介入相比，TNR反而可能造成流浪猫数量增加（ McCarthy et al. 2013）。
+- 猫的高生育能力、抓捕它们所耗费的精力、以及庞大的流浪猫数量，使得通过进行足够的绝育来控制流浪猫群落规模变得非常困难。模型显示，只有当一个流浪猫群落的绝育比例达到70%$\sim$94%时，TNR才有效。每当有一只未绝育的猫生产了，或有人抛弃了未绝育的猫时，TNR成功的可能性都会变得渺茫。
+
+- Feral cat colonies are a major part of the cat problem: feral or  unowned cats are responsible for an estimated 69% of all cat-killed  birds in the U.S.
+- From a public health perspective, trap-neuter-vaccinate-return  programs do not reduce the risk of toxoplasmosis or rabies exposure for  human populations (Roebling et al. 2014). Studies show that TNR programs have been and are expected to be less effective at reducing populations of feral cats than trapping and euthanizing cats (Andersen et al. 2004, Longcore et al. 2009). One study found that trap-euthanize could  extirpate a large colony within 2 years, whereas the twice as expensive  TNR option was unlikely to succeed within a 30-year timeframe (Lohr et  al. 2013). In cases where there is some immigration (or release) of new  cats in the population, euthanasia is likely to be the most effective  treatment (Schmidt et al. 2009). The National Association of State  Public Health Veterinarians concluded that free-ranging feral cats and  TNR programs are detrimental to public health.
+- TNR does not address the risks and hardships that cats face living  in the wild and that contribute to an average life expectancy of as  little as 2 years, including injury, disease, predation, vehicle  collisions, and maiming during cat-cat fights. Certain animal welfare  groups, such as People for the Ethical Treatment of Animals, also oppose TNR for these reasons.
+
+
+
 
 
 [^1]: 「译注」这也是我们想表达的立场：我们爱猫，也爱自然界中的其他生命。我们愿意为改善生态环境做一点微小的努力。
