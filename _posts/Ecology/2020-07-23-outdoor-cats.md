@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "「译」流浪猫对鸟类的影响"
+title:      "「译」FAQ：流浪猫对鸟类的影响"
 subtitle: 	"未完成 | 版权咨询中 | 此处仅做暂存使用 | 谢绝任何形式转发、转载"
 date:       2020-07-23
 author:     "Yuwei"
@@ -24,7 +24,7 @@ tags:
 
 
 
-# 问答：流浪猫对鸟类的影响
+# FAQ：流浪猫对鸟类的影响
 
 > 原文链接：[FAQ: Outdoor Cats and Their Effects on Birds](https://www.allaboutbirds.org/news/faq-outdoor-cats-and-their-effects-on-birds/)
 
