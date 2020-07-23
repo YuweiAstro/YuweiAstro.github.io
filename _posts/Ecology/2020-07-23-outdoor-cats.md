@@ -39,7 +39,7 @@ tags:
 
 
 
-[^1]: [Loss et al. 2013, Nature](https://www.nature.com/articles/ncomms2380?WT.mc_id=FBK_NCOMMS#abstract)
+[^1]: 「译注」这也是我们想表达的立场：我们爱猫，也爱自然界中的其他生命。我们愿意为改善生态环境做一点微小的努力。
 
-[^2]: 「译注」这也是我们想表达的立场：我们爱猫，也爱自然界中的其他生命。我们愿意为改善生态环境做一点微小的努力。
+[^2]: [Loss et al. 2013, Nature](https://www.nature.com/articles/ncomms2380?WT.mc_id=FBK_NCOMMS#abstract)
 
