@@ -6,6 +6,7 @@ date:       2020-07-23
 author:     "Yuwei"
 header-img: "img/cat-bird-bg.jpg"
 header-mask: 0.3
+mathjax:	true
 category: [ecology]
 tags:
   - ecology
