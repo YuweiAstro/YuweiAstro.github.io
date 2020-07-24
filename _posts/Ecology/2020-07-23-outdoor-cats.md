@@ -22,10 +22,6 @@ tags:
 
 
 
-# FAQ：流浪猫对鸟类的影响
-
-> 原文链接：[FAQ: Outdoor Cats and Their Effects on Birds](https://www.allaboutbirds.org/news/faq-outdoor-cats-and-their-effects-on-birds/)
-
 ### 康奈尔鸟类实验室是在讨伐猫咪吗[^1]？
 
 **答**：完全不是。我们实验室的很多鸟类学家与员工都在家中养猫。我们爱鸟，也爱猫。然而数量急剧增长的流浪猫引起了亟需重视的问题——它不仅影响鸟类，也影响着人类和猫自身。仅仅在美国，就有六千万至一亿只四处游走的流浪猫。对自然界来说，猫是入侵的捕食者。即使保守估计，在美国每年死于它们爪下的鸟类也有13亿至40亿只、哺乳动物有63亿至223亿只([Loss et al. 2013, Nature](https://www.nature.com/articles/ncomms2380?WT.mc_id=FBK_NCOMMS#abstract))。作为一个动物保护组织，我们意识到这是一种反自然的现象，并对本地野生动物造成了巨大危害。猫的问题是人类导致的，也应该由我们来解决。
