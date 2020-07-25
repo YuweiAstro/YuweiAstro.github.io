@@ -17,7 +17,7 @@ tags:
 
 > 本文译自[康奈尔鸟类学实验室（The Cornell Lab of Ornithology）官网](https://www.allaboutbirds.org/news/)发表的文章：[FAQ: Outdoor Cats and Their Effects on Birds](https://www.allaboutbirds.org/news/faq-outdoor-cats-and-their-effects-on-birds/)
 >
-> 原文中的讨论包括流浪猫和可以进入户外的宠物猫，我们选译了与流浪猫关系最紧密的段落，希望它能和你的爱心一起，发展出一种生态友好的爱猫方式 : )
+> 原文中的讨论包括流浪猫和可以进入户外的宠物猫，这里选译了与流浪猫关系最紧密的段落。
 >
 
 
