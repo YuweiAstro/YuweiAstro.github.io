@@ -4,7 +4,6 @@ title:      "Tips for Radio Astronomy"
 date:       2020-07-21
 author:     "Yuwei"
 header-img: "img/post-bg-os-metro.jpg"
-header-mask: 0
 mathjax: true
 category: [astronomy]
 tags:
