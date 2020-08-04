@@ -98,3 +98,5 @@ tags:
 > Translated from English by Yuwei.
 >
 > Original English text © Cornell Lab of Ornithology, used with permission. https://www.allaboutbirds.org/news/faq-outdoor-cats-and-their-effects-on-birds/
+>
+> 转载需联系原作者及译者。
